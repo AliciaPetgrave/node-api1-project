@@ -3,11 +3,7 @@ const shortid = require("shortid")
 
 const server = express()
 
-let users = [{
-    name:"",
-    bio:"",
-    id: "",
-}]
+let users = []
 
 server.use(express.json())
 
@@ -26,10 +22,10 @@ server.post("/api/users", (req, res) => {
     res.status(400).json({errorMessage: "Please provide name and bio for the user."})
     }
 
-    //save error
-    if (usersInfo.name === undefined || usersInfo.bio === undefined){
-    res.status(500).json({errorMessage: "There was an error while saving the user to the database"})
-    }
+    // //save error
+    // if (usersInfo.name === undefined || usersInfo.bio === undefined){
+    // res.status(500).json({errorMessage: "There was an error while saving the user to the database"})
+    // }
 
     else {
         users.push(usersInfo)
@@ -40,14 +36,14 @@ server.post("/api/users", (req, res) => {
 //GET request
 server.get("/api/users", (req, res) => {
     
-    //error
-    if (users.name == undefined || users.bio == undefined){
-    res.status(500).json({errorMessage: "The users information could not be retrieved."})
-    }
+    // //error
+    // if (users.name == undefined || users.bio == undefined){
+    // res.status(500).json({errorMessage: "The users information could not be retrieved."})
+    // }
 
-    else {
+  
         res.status(201).json(users)
-    }
+    
 })
 
 //GET by id
